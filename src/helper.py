@@ -1,7 +1,7 @@
 import re
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report
 
-
+# Helper function for preprocessing/normalizing text
 def preprocess_text(text, lemmatizer, stop_words):
     text = re.sub(r'http\S+|www\S+|@\w+', '', text)
     text = re.sub(r'[^a-zA-Z\s]', '', text)
@@ -9,6 +9,7 @@ def preprocess_text(text, lemmatizer, stop_words):
     clean_tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
     return " ".join(clean_tokens)
 
+# Helper function to print metrics and return confusion matrix
 def print_metrics(name, y_true, y_pred):
     acc = accuracy_score(y_true, y_pred)
     f1 = f1_score(y_true, y_pred, average='macro')
@@ -17,8 +18,8 @@ def print_metrics(name, y_true, y_pred):
     print(f"Macro-F1: {f1:.4f}\n")
     return confusion_matrix(y_true, y_pred)
 
+# Helper function to print misclassified examples
 labels_map = {1: "World", 2: "Sports", 3: "Business", 4: "Sci/Tech"}
-
 def print_misclassified(texts, y_true, y_pred, model_name, n=20):
     print(f" FIRST {n} MISCLASSIFIED: {model_name}")
     count = 0

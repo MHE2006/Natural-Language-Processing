@@ -13,25 +13,20 @@ from sklearn.svm import LinearSVC
 from helper import preprocess_text, print_metrics, print_misclassified
 
 
-
-
-
 SEED = 123
 
 
 dataset = load_dataset("sh0416/ag_news")
-
 dev_split = dataset['train'].train_test_split(test_size=0.1, seed=SEED)
-
-
 lemmatizer = WordNetLemmatizer()
-
 stop_words = set(stopwords.words('english'))
+
 
 train_texts = [preprocess_text(x,lemmatizer,stop_words) for x in dev_split['train']['description']]
 dev_texts = [preprocess_text(x, lemmatizer, stop_words) for x in dev_split['test']['description']]
 test_texts = [preprocess_text(x, lemmatizer, stop_words) for x in dataset['test']['description']]
 
+### Vectorization using TF-IDF ###
 tfidf = TfidfVectorizer() 
 vectorized_train = tfidf.fit_transform(train_texts)
 vectorized_dev = tfidf.transform(dev_texts)
