@@ -31,7 +31,7 @@ uv sync
 ## Run Code
 
 ```bash
-uv run assignment_1.py
+uv run assignment_2.py
 ```
 
 ---
