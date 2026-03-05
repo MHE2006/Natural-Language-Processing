@@ -10,14 +10,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
-from helper import preprocess_text, print_metrics, print_misclassified
-
+from assignment_2.helper import preprocess_text, print_metrics, print_misclassified
 
 SEED = 123
 
 
 dataset = load_dataset("sh0416/ag_news")
 dev_split = dataset['train'].train_test_split(test_size=0.1, seed=SEED)
+
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
 
