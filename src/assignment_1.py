@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
-from helper import preprocess_text, print_metrics, print_misclassified
+from src.helper import preprocess_text, print_metrics, print_misclassified
 
 SEED = 123
 

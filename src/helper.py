@@ -40,7 +40,7 @@ def print_metrics(name, y_true, y_pred):
     return confusion_matrix(y_true, y_pred)
 
 # Helper function to print misclassified examples
-labels_map = {0: "World", 1: "Sports", 2: "Business", 3: "Sci/Tech"}
+labels_map = {1: "World", 2: "Sports", 3: "Business", 4: "Sci/Tech"}
 def print_misclassified(texts, y_true, y_pred, model_name, n=20):
     print(f" FIRST {n} MISCLASSIFIED: {model_name}")
     count = 0
@@ -83,7 +83,6 @@ def evaluate_on_test(model, test_loader, device, model_name="Model"):
     plt.title(f'{model_name} Confusion Matrix')
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
-    plt.show()
     filename = model_name.lower().replace(" ", "_").replace("(", "").replace(")", "")
     plt.savefig(f"{PLOTS_DIR}/{filename}_confusion_matrix.png", bbox_inches='tight')
     plt.close()

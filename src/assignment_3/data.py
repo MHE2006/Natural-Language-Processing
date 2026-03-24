@@ -1,4 +1,4 @@
-from helper import get_ag_news_split, SEED
+from src.helper import get_ag_news_split, SEED
 from transformers import DistilBertTokenizer
 
 ## Getting AG News dataset and creating dev split ##

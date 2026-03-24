@@ -1,4 +1,4 @@
-from helper import get_ag_news_split, SEED
+from src.helper import get_ag_news_split, SEED
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 from transformers import AutoTokenizer
