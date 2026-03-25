@@ -2,7 +2,7 @@ import torch
 import numpy as np
 from transformers import DistilBertTokenizer, DistilBertForSequenceClassification, Trainer
 from src.assignment_3.data import tokenized_test
-from src.helper import compute_metrics, evaluate_on_test, print_metrics, print_misclassified, get_ag_news_split, SEED
+from src.helper import compute_metrics, evaluate_on_test, print_metrics, print_misclassified_bert, get_ag_news_split, SEED
 from src.assignment_2.models import LSTMClassifier
 from src.assignment_2.data import DataPipeline,dataset,dev_split
 from src.assignment_2.train import train_model
@@ -14,7 +14,6 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 pipeline = DataPipeline(max_length=128, batch_size=64)
 train_loader, dev_loader, test_loader = pipeline.prepare_all_loaders(dataset, dev_split)
 vocab_size = pipeline.vocab_size
-
 
 ### Assignment 2 Best Model ###
 
@@ -29,7 +28,7 @@ print(confusion_matrix)
 
 hugging_face_model = "Merijn2006/Assignment_3_NLP"
 
-model = DistilBertForSequenceClassification.from_pretrained("hugging_face_model")
+model = DistilBertForSequenceClassification.from_pretrained(hugging_face_model)
 tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
 
 trainer = Trainer(
@@ -63,4 +62,4 @@ keyword_masking_evalutation(trainer,tokenized_test, tokenizer,keywords)
 dataset, dev_split = get_ag_news_split(seed=SEED)
 test_texts = [str(t) + " " + str(d) for t, d in zip(dataset['test']['title'], dataset['test']['description'])]
 print("Missclassified")
-print_misclassified(test_texts, bert_labels, bert_preds, "Bert", 10 )
+print_misclassified_bert(test_texts, bert_labels, bert_preds, "Bert", 10 )
