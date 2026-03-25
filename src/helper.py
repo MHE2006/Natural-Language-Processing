@@ -59,12 +59,13 @@ def print_misclassified_bert(texts, y_true, y_pred, model_name, n=20):
     print(f" FIRST {n} MISCLASSIFIED: {model_name}")
     count = 0
     for i in range(len(y_true)):
-        if y_true[i] != y_pred[i]+ 1:
+        aligned_pred = y_pred[i] + 1
+        if y_true[i] != aligned_pred:
             count += 1
             print(f"{count}. [Index {i}]")
             print(f"   Text: {texts[i][:150]}...") 
             print(f"   ACTUAL: {labels_map[y_true[i]]}")
-            print(f"   PREDICTED: {labels_map[y_pred[i]]}\n")
+            print(f"   PREDICTED: {labels_map[aligned_pred]}\n")
         if count >= n:
             break
 
