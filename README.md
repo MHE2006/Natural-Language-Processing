@@ -28,13 +28,18 @@ uv sync
 
 ---
 
-## Run Code
+## Run assignment_2
 
 ```bash
 uv run assignment_2.py
 ```
 
 ---
+## Run assignment_3
+```bash
+uv run python -m src.assignment_3.assignment_3
+```
+
 
 ## Reproducibility
 - Fixed random seed: `123`
