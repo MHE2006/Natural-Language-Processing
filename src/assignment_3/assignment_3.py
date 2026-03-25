@@ -26,7 +26,10 @@ confusion_matrix = print_metrics("BILSTM", lstm_labels, lstm_preds)
 print(confusion_matrix)
 
 ### Assignment 3: DistilBERT ###
-model = DistilBertForSequenceClassification.from_pretrained("./Saved_model_from_colab")
+
+hugging_face_model = "Merijn2006/Assignment_3_NLP"
+
+model = DistilBertForSequenceClassification.from_pretrained("hugging_face_model")
 tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
 
 trainer = Trainer(
@@ -48,13 +51,7 @@ print(cm)
 print("Slice Evaluation Length Buckets")
 length_bucket_evaluation(trainer, tokenized_test)
 
-model = DistilBertForSequenceClassification.from_pretrained("./Saved_model_from_colab")
-tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
 
-trainer = Trainer(
-    model=model,
-    compute_metrics=compute_metrics,
-)
 print("Original accuracy: ")
 results = trainer.evaluate(eval_dataset=tokenized_test)
 

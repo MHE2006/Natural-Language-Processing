@@ -2,3 +2,6 @@ results/
 saved_model/
 **/__pycache__/
 *.pyc
+Saved_model_from_colab/
+*.safetensors
+saved_model/
