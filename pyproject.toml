@@ -28,17 +28,16 @@ explicit = true
 name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
 explicit = true
-
 [tool.uv.sources]
 torch = [
-    { index = "pytorch-cu121", marker = "platform_system == 'Windows' or platform_system == 'Linux'" },
-    { index = "pytorch-cpu", marker = "platform_system == 'Darwin'" }
+    { index = "pytorch-cu121", marker = "platform_system == 'Linux' or platform_system == 'Windows'" },
+    { marker = "platform_system == 'Darwin'" }
 ]
 torchvision = [
-    { index = "pytorch-cu121", marker = "platform_system == 'Windows' or platform_system == 'Linux'" },
-    { index = "pytorch-cpu", marker = "platform_system == 'Darwin'" }
+    { index = "pytorch-cu121", marker = "platform_system == 'Linux' or platform_system == 'Windows'" },
+    { marker = "platform_system == 'Darwin'" }
 ]
 torchaudio = [
-    { index = "pytorch-cu121", marker = "platform_system == 'Windows' or platform_system == 'Linux'" },
-    { index = "pytorch-cpu", marker = "platform_system == 'Darwin'" }
+    { index = "pytorch-cu121", marker = "platform_system == 'Linux' or platform_system == 'Windows'" },
+    { marker = "platform_system == 'Darwin'" }
 ]
