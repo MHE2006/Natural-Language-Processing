@@ -10,7 +10,7 @@ from src.assignment_3.slice_ev import length_bucket_evaluation, keyword_masking_
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
+""""
 pipeline = DataPipeline(max_length=128, batch_size=64)
 train_loader, dev_loader, test_loader = pipeline.prepare_all_loaders(dataset, dev_split)
 vocab_size = pipeline.vocab_size
@@ -23,7 +23,7 @@ lstm_preds, lstm_labels = evaluate_on_test(best_lstm, test_loader, device, "BiLS
 
 confusion_matrix = print_metrics("BILSTM", lstm_labels, lstm_preds)
 print(confusion_matrix)
-
+"""
 ### Assignment 3: DistilBERT ###
 
 hugging_face_model = "Merijn2006/Assignment_3_NLP"
